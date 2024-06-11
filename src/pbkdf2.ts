@@ -1,5 +1,5 @@
-import type { PasswordManager } from "./password-manager.js";
 import { pbkdf2 } from "pbkdf2";
+import type { PasswordManager } from "./password-manager.js";
 import { randomHex } from "./utility.js";
 
 const SALT_LENGTH = 16;

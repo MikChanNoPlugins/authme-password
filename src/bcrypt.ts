@@ -1,5 +1,5 @@
+import { compare, hash } from "bcrypt";
 import type { PasswordManager } from "./password-manager.js";
-import { hash, compare } from "bcrypt";
 
 const SALT_ROUNDS = 12;
 
