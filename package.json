@@ -5,6 +5,9 @@
 	"exports": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"license": "MIT",
+	"repository": "https://github.com/MikChanNoPlugins/authme-password",
+	"bugs": "https://github.com/MikChanNoPlugins/authme-password/issues",
+	"keywords": ["minecraft", "authme"],
 	"volta": {
 		"node": "22.0.0",
 		"npm": "10.5.1"
