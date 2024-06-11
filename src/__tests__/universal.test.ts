@@ -1,9 +1,9 @@
 import { equal } from "node:assert/strict";
 import { describe } from "node:test";
-import { Pbkdf2PasswordManager } from "../pbkdf2.js";
+import { AuthMePasswordManager } from "../universal.js";
 
-await describe("Pbkdf2PasswordManager", async () => {
-	const pm = new Pbkdf2PasswordManager();
+await describe("AuthMePasswordManager", async () => {
+	const pm = new AuthMePasswordManager();
 
 	await describe("given some random password", async () => {
 		const password = "Hello world";
