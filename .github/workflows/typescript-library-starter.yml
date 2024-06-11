@@ -14,6 +14,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
+          run_install: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
@@ -29,6 +30,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
+          run_install: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
@@ -46,6 +48,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
+          run_install: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
@@ -62,6 +65,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
+          run_install: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
@@ -79,6 +83,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
+          run_install: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
@@ -93,6 +98,10 @@ jobs:
     needs: [dependencies]
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
@@ -110,6 +119,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
+          run_install: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
@@ -127,6 +137,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
+          run_install: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
