@@ -10,10 +10,7 @@
 		"url": "git+https://github.com/MikChanNoPlugins/authme-password.git"
 	},
 	"bugs": "https://github.com/MikChanNoPlugins/authme-password/issues",
-	"keywords": [
-		"minecraft",
-		"authme"
-	],
+	"keywords": ["minecraft", "authme"],
 	"volta": {
 		"node": "22.0.0",
 		"npm": "10.5.1"
