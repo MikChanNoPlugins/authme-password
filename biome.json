@@ -8,6 +8,9 @@
 			"all": true,
 			"nursery": {
 				"noNodejsModules": "off"
+			},
+			"performance": {
+				"noBarrelFile": "off"
 			}
 		}
 	}

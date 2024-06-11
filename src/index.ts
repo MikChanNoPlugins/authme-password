@@ -1,6 +1,2 @@
-import { bar } from "./bar.js";
-import { foo } from "./foo.js";
-
-export function foobar(a: number, b: number) {
-	return foo().repeat(a).length + bar().repeat(b).length;
-}
+export { type PasswordManager } from "./password-manager.js";
+export { ShaPasswordManager } from "./sha.js";
