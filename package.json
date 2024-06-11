@@ -1,16 +1,6 @@
 {
   "name": "@mcnp/authme-password",
   "version": "0.0.0-development",
-  "description": "Yet another typescript library starter template",
-  "keywords": [
-    "minecraft",
-    "plugin",
-    "authme"
-  ],
-  "homepage": "https://github.com/MikChanNoPlugins/authme-password",
-  "bugs": "https://github.com/MikChanNoPlugins/authme-password/issues",
-  "author": "George Endo <georgeendo0@gmail.com>",
-  "repository": "MikChanNoPlugins/authme-password",
   "type": "module",
   "exports": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -23,7 +13,6 @@
     "access": "public"
   },
   "scripts": {
-    "setup": "node --import=@nitrogql/esbuild-register ./scripts/setup.ts",
     "build": "node --run clean && node --run type:dts && node --run type:extract && node --run build:src",
     "build:src": "node --import=@nitrogql/esbuild-register ./scripts/build.ts",
     "clean": "rimraf build coverage",
@@ -35,7 +24,6 @@
     "test": "node --import=@nitrogql/esbuild-register --test \"src/**/*.test.ts\"",
     "test:watch": "node --import=@nitrogql/esbuild-register --watch --test \"src/**/*.test.ts\"",
     "test:coverage": "NODE_V8_COVERAGE=./coverage c8 -r html node --import=@nitrogql/esbuild-register --experimental-test-coverage --test \"src/**/*.test.ts\"",
-    "test:setup": "node --import=@nitrogql/esbuild-register ./scripts/test-setup.ts",
     "spell:check": "cspell \"{README.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,.github/*.md,src/**/*.ts}\"",
     "cz": "cz",
     "semantic-release": "semantic-release"
