@@ -1,16 +1,15 @@
 import type { PasswordManager } from "./password-manager.js";
 import { randomHex, sha256 } from "./utility.js";
 
+const SALT_LENGTH = 16;
+
+const hashWithSalt = async (password: string, salt: string) =>
+	sha256((await sha256(password)) + salt);
+
 export class ShaPasswordManager implements PasswordManager {
-	private static readonly SALT_LENGTH = 16;
-
-	private async hashWithSalt(password: string, salt: string) {
-		return await sha256((await sha256(password)) + salt);
-	}
-
 	async hash(password: string): Promise<string> {
-		const salt = randomHex(ShaPasswordManager.SALT_LENGTH);
-		const hash = await this.hashWithSalt(password, salt);
+		const salt = randomHex(SALT_LENGTH);
+		const hash = await hashWithSalt(password, salt);
 		return `$SHA$${salt}$${hash}`;
 	}
 
@@ -19,8 +18,8 @@ export class ShaPasswordManager implements PasswordManager {
 		return (
 			parts.length === 4 &&
 			parts[1] === "SHA" &&
-			!!parts[2] &&
-			parts[3] === (await this.hashWithSalt(password, parts[2]))
+			typeof parts[2] === "string" &&
+			parts[3] === (await hashWithSalt(password, parts[2]))
 		);
 	}
 }
