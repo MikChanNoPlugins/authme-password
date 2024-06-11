@@ -13,7 +13,7 @@
 		"access": "public"
 	},
 	"scripts": {
-		"build": "node --run clean && node --run type:dts && node --run build:src",
+		"build": "node --run clean && node --run type:dts && node --run type:extract && node --run build:src",
 		"build:src": "node --import=@nitrogql/esbuild-register ./scripts/build.ts",
 		"clean": "rimraf build coverage",
 		"type:dts": "tsc --emitDeclarationOnly --project tsconfig.build.json",
@@ -45,6 +45,7 @@
 		"cspell": "^8.8.3",
 		"esbuild": "^0.21.4",
 		"esbuild-register": "^3.5.0",
+		"glob": "^10.4.1",
 		"prompts": "^2.4.2",
 		"rimraf": "^5.0.7",
 		"semantic-release": "^23.1.1",

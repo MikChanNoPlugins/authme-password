@@ -1,14 +1,15 @@
-import { randomUUID } from "node:crypto";
 import path from "node:path";
 import url from "node:url";
 import { build as esbuild } from "esbuild";
+import { globSync } from "glob";
 
 const srcPath = path.join(process.cwd(), "src");
 const buildPath = path.join(process.cwd(), "build");
+const entryPoints = globSync("./src/**", { nodir: true })
+	.filter((src) => !src.includes("__tests__"))
+	.map((src) => path.join(process.cwd(), src));
 
 async function build() {
-	const buildId = randomUUID().replace(/-/g, "");
-
 	return await esbuild({
 		platform: "node",
 		target: "node21",
@@ -16,21 +17,9 @@ async function build() {
 		nodePaths: [srcPath],
 		sourcemap: true,
 		external: [],
-		bundle: true,
-		entryPoints: [path.join(srcPath, "index.ts")],
-		banner: {
-			js: `
-            import { createRequire as createRequire${buildId} } from 'module';
-            import { fileURLToPath as fileURLToPath${buildId} } from 'url';
-            import { dirname as dirname${buildId} } from 'path';
-
-            // using var here to allow subsequent override by authors of this
-            // library that would be using the same ESM trick
-            var require = createRequire${buildId}(import.meta.url);
-            var __filename = fileURLToPath${buildId}(import.meta.url);
-            var __dirname = dirname${buildId}(__filename);
-      `,
-		},
+		bundle: false,
+		minify: true,
+		entryPoints: entryPoints,
 		outdir: buildPath,
 	});
 }

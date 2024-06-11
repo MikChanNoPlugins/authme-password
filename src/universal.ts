@@ -3,19 +3,22 @@ import type { PasswordManager } from "./password-manager.js";
 import { Pbkdf2PasswordManager } from "./pbkdf2.js";
 import { ShaPasswordManager } from "./sha.js";
 
-const passwordManagers = {
-	sha: ShaPasswordManager,
-	pbkdf2: Pbkdf2PasswordManager,
-	bcrypt: BcryptPasswordManager,
-} as const;
-
-type PasswordManagerType = keyof typeof passwordManagers;
+export type PasswordManagerType = "sha" | "pbkdf2" | "bcrypt";
 
 export class AuthMePasswordManager implements PasswordManager {
 	private readonly pm: PasswordManager;
 
 	constructor(defaultType: PasswordManagerType = "sha") {
-		this.pm = new passwordManagers[defaultType]();
+		this.pm = (() => {
+			switch (defaultType) {
+				case "sha":
+					return new ShaPasswordManager();
+				case "pbkdf2":
+					return new Pbkdf2PasswordManager();
+				case "bcrypt":
+					return new BcryptPasswordManager();
+			}
+		})();
 	}
 
 	hash(password: string): Promise<string> {
