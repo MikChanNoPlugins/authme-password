@@ -13,7 +13,7 @@
 		"access": "public"
 	},
 	"scripts": {
-		"build": "node --run clean && node --run type:dts && node --run type:extract && node --run build:src",
+		"build": "node --run clean && node --run type:dts && node --run build:src",
 		"build:src": "node --import=@nitrogql/esbuild-register ./scripts/build.ts",
 		"clean": "rimraf build coverage",
 		"type:dts": "tsc --emitDeclarationOnly --project tsconfig.build.json",
